@@ -5,12 +5,12 @@ namespace Meeg.Configuration.Extensions.MultiTenant
 {
     public static class AppConfigurationBinderExtensions
     {
-        public static T GetValue<T>(this IAppConfigurationRoot configuration, string key, TenantKey tenant)
+        public static T GetValue<T>(this IAppConfigurationRoot configuration, string key, string tenant)
         {
             return configuration.GetValue(key, tenant, default(T));
         }
 
-        public static T GetValue<T>(this IAppConfigurationRoot configuration, string key, TenantKey tenant, T defaultValue)
+        public static T GetValue<T>(this IAppConfigurationRoot configuration, string key, string tenant, T defaultValue)
         {
             if (string.IsNullOrEmpty(tenant))
             {
@@ -33,12 +33,12 @@ namespace Meeg.Configuration.Extensions.MultiTenant
             return configuration.GetValue(key, defaultValue);
         }
 
-        public static T Get<T>(this IAppConfigurationRoot configuration, TenantKey tenant)
+        public static T Get<T>(this IAppConfigurationRoot configuration, string tenant)
         {
             return configuration.Get<T>(tenant, _ => { });
         }
 
-        public static T Get<T>(this IAppConfigurationRoot configuration, TenantKey tenant,
+        public static T Get<T>(this IAppConfigurationRoot configuration, string tenant,
             Action<AppConfigurationBinderOptions> configureOptions)
         {
             if (configuration == null)
@@ -56,12 +56,12 @@ namespace Meeg.Configuration.Extensions.MultiTenant
             return (T)result;
         }
 
-        public static object Get(this IAppConfigurationRoot configuration, Type type, TenantKey tenant)
+        public static object Get(this IAppConfigurationRoot configuration, Type type, string tenant)
         {
             return configuration.Get(type, tenant, _ => { });
         }
 
-        public static object Get(this IAppConfigurationRoot configuration, Type type, TenantKey tenant,
+        public static object Get(this IAppConfigurationRoot configuration, Type type, string tenant,
             Action<AppConfigurationBinderOptions> configureOptions)
         {
             if (configuration == null)
@@ -74,17 +74,17 @@ namespace Meeg.Configuration.Extensions.MultiTenant
             return section.Get(type, configureOptions);
         }
 
-        public static void Bind(this IAppConfigurationRoot configuration, string key, TenantKey tenant, object instance)
+        public static void Bind(this IAppConfigurationRoot configuration, string key, string tenant, object instance)
         {
             configuration.GetSection(key, tenant).Bind(instance);
         }
 
-        public static void Bind(this IAppConfigurationRoot configuration, TenantKey tenant, object instance)
+        public static void Bind(this IAppConfigurationRoot configuration, string tenant, object instance)
         {
             configuration.Bind(tenant, instance, o => { });
         }
 
-        public static void Bind(this IAppConfigurationRoot configuration, TenantKey tenant, object instance, Action<AppConfigurationBinderOptions> configureOptions)
+        public static void Bind(this IAppConfigurationRoot configuration, string tenant, object instance, Action<AppConfigurationBinderOptions> configureOptions)
         {
             if (configuration == null)
             {

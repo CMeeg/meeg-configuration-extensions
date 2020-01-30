@@ -23,7 +23,7 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             var config = new AppConfiguration(configManager);
 
-            var settings = config.Get<TestSettings>(new TenantKey("Tenant"));
+            var settings = config.Get<TestSettings>("Tenant");
 
             Assert.Multiple(() =>
             {
@@ -44,7 +44,7 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             var config = new AppConfiguration(configManager);
 
-            var settings = config.GetSection("Category1", new TenantKey("Tenant")).Get<TestSettings>();
+            var settings = config.GetSection("Category1", "Tenant").Get<TestSettings>();
 
             Assert.Multiple(() =>
             {
@@ -66,7 +66,7 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
             var config = new AppConfiguration(configManager);
 
             var settings = new TestSettings();
-            config.Bind(tenant: new TenantKey("Tenant"), settings);
+            config.Bind(tenant: "Tenant", settings);
 
             Assert.Multiple(() =>
             {
@@ -88,7 +88,7 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
             var config = new AppConfiguration(configManager);
 
             var settings = new TestSettings();
-            config.Bind("Category1", new TenantKey("Tenant"), settings);
+            config.Bind("Category1", "Tenant", settings);
 
             Assert.Multiple(() =>
             {

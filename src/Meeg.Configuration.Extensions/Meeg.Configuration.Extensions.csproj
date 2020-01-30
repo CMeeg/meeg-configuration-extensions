@@ -44,7 +44,6 @@
     <Compile Include="MultiTenant\AppConfigurationBinderExtensions.cs" />
     <Compile Include="MultiTenant\AppConfigurationExtensions.cs" />
     <Compile Include="MultiTenant\TenantAppConfigurationSection.cs" />
-    <Compile Include="MultiTenant\TenantKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

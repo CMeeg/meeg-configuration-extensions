@@ -19,9 +19,9 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             Assert.Multiple(() =>
             {
-                Assert.That(config.GetValue("Key", tenant: new TenantKey("Tenant")), Is.EqualTo("Value1"));
+                Assert.That(config.GetValue("Key", tenant: "Tenant"), Is.EqualTo("Value1"));
 
-                Assert.That(config.GetValue("Category:Key", tenant: new TenantKey("Tenant")), Is.EqualTo("Value2"));
+                Assert.That(config.GetValue("Category:Key", tenant: "Tenant"), Is.EqualTo("Value2"));
             });
         }
 
@@ -39,9 +39,9 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             Assert.Multiple(() =>
             {
-                Assert.That(config.GetValue("Key", tenant: new TenantKey("Tenant")), Is.EqualTo("Value3"));
+                Assert.That(config.GetValue("Key", tenant: "Tenant"), Is.EqualTo("Value3"));
 
-                Assert.That(config.GetValue("Category:Key", tenant: new TenantKey("Tenant")), Is.EqualTo("Value4"));
+                Assert.That(config.GetValue("Category:Key", tenant: "Tenant"), Is.EqualTo("Value4"));
             });
         }
 
@@ -61,13 +61,13 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             Assert.Multiple(() =>
             {
-                Assert.That(config.GetValue("Key", new TenantKey("Tenant"), "DefaultValue"), Is.EqualTo("DefaultValue"));
+                Assert.That(config.GetValue("Key", "Tenant", "DefaultValue"), Is.EqualTo("DefaultValue"));
 
-                Assert.That(config.GetValue("Category:Key", new TenantKey("Tenant"), "DefaultValue"), Is.EqualTo("DefaultValue"));
+                Assert.That(config.GetValue("Category:Key", "Tenant", "DefaultValue"), Is.EqualTo("DefaultValue"));
 
-                Assert.That(config.GetValue("GlobalKey", new TenantKey("Tenant"), "DefaultValue"), Is.EqualTo("DefaultValue"));
+                Assert.That(config.GetValue("GlobalKey", "Tenant", "DefaultValue"), Is.EqualTo("DefaultValue"));
 
-                Assert.That(config.GetValue("Category:GlobalKey", new TenantKey("Tenant"), "DefaultValue"), Is.EqualTo("DefaultValue"));
+                Assert.That(config.GetValue("Category:GlobalKey", "Tenant", "DefaultValue"), Is.EqualTo("DefaultValue"));
             });
         }
 
@@ -84,11 +84,11 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             Assert.Multiple(() =>
             {
-                Assert.That(config.GetSection("Key", new TenantKey("Tenant")).Value, Is.EqualTo("Value1"));
+                Assert.That(config.GetSection("Key", "Tenant").Value, Is.EqualTo("Value1"));
 
-                Assert.That(config.GetSection("Category", new TenantKey("Tenant"))["Key1"], Is.EqualTo("Value2"));
+                Assert.That(config.GetSection("Category", "Tenant")["Key1"], Is.EqualTo("Value2"));
 
-                Assert.That(config.GetSection("Category", new TenantKey("Tenant"))["Key2"], Is.EqualTo("Value3"));
+                Assert.That(config.GetSection("Category", "Tenant")["Key2"], Is.EqualTo("Value3"));
             });
         }
 
@@ -108,11 +108,11 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             Assert.Multiple(() =>
             {
-                Assert.That(config.GetSection("Key", new TenantKey("Tenant")).Value, Is.EqualTo("Value4"));
+                Assert.That(config.GetSection("Key", "Tenant").Value, Is.EqualTo("Value4"));
 
-                Assert.That(config.GetSection("Category", new TenantKey("Tenant"))["Key1"], Is.EqualTo("Value5"));
+                Assert.That(config.GetSection("Category", "Tenant")["Key1"], Is.EqualTo("Value5"));
 
-                Assert.That(config.GetSection("Category", new TenantKey("Tenant"))["Key2"], Is.EqualTo(null));
+                Assert.That(config.GetSection("Category", "Tenant")["Key2"], Is.EqualTo(null));
             });
         }
 
@@ -133,9 +133,9 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             Assert.Multiple(() =>
             {
-                Assert.That(config.GetSection("Key", new TenantKey("Tenant")).Value, Is.EqualTo("Value1"));
+                Assert.That(config.GetSection("Key", "Tenant").Value, Is.EqualTo("Value1"));
 
-                var categorySection1 = config.GetSection("Category1", new TenantKey("Tenant"));
+                var categorySection1 = config.GetSection("Category1", "Tenant");
 
                 Assert.That(categorySection1["Key2"], Is.EqualTo("Value3"));
 
@@ -162,7 +162,7 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             Assert.Multiple(() =>
             {
-                var children = config.GetSection("Category1", new TenantKey("Tenant"))
+                var children = config.GetSection("Category1", "Tenant")
                     .GetChildren()
                     .ToList();
 
@@ -202,7 +202,7 @@ namespace Meeg.Configuration.Extensions.Tests.MultiTenant
 
             Assert.Multiple(() =>
             {
-                var children = config.GetChildren(new TenantKey("Tenant"))
+                var children = config.GetChildren("Tenant")
                     .ToList();
 
                 Assert.That(children.Count, Is.EqualTo(9));

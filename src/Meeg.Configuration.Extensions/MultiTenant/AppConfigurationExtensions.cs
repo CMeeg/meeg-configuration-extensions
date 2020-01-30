@@ -5,17 +5,17 @@ namespace Meeg.Configuration.Extensions.MultiTenant
 {
     public static class AppConfigurationExtensions
     {
-        public static string GetValue(this IAppConfigurationRoot appConfig, string key, TenantKey tenant)
+        public static string GetValue(this IAppConfigurationRoot appConfig, string key, string tenant)
         {
             return appConfig.GetValue<string>(key, tenant);
         }
 
-        public static string GetValue(this IAppConfigurationRoot appConfig, string key, TenantKey tenant, string defaultValue)
+        public static string GetValue(this IAppConfigurationRoot appConfig, string key, string tenant, string defaultValue)
         {
             return appConfig.GetValue<string>(key, tenant, defaultValue);
         }
 
-        public static IAppConfigurationSection GetSection(this IAppConfigurationRoot appConfig, string key, TenantKey tenant)
+        public static IAppConfigurationSection GetSection(this IAppConfigurationRoot appConfig, string key, string tenant)
         {
             if (string.IsNullOrEmpty(tenant))
             {
@@ -27,7 +27,7 @@ namespace Meeg.Configuration.Extensions.MultiTenant
             return new TenantAppConfigurationSection(appConfig, key, tenant);
         }
 
-        public static IEnumerable<IAppConfigurationSection> GetChildren(this IAppConfigurationRoot appConfig, TenantKey tenant)
+        public static IEnumerable<IAppConfigurationSection> GetChildren(this IAppConfigurationRoot appConfig, string tenant)
         {
             if (string.IsNullOrEmpty(tenant))
             {

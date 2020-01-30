@@ -7,7 +7,7 @@ namespace Meeg.Configuration.Extensions.MultiTenant
     public class TenantAppConfigurationSection : IAppConfigurationSection
     {
         private readonly IAppConfigurationRoot root;
-        private readonly TenantKey tenant;
+        private readonly string tenant;
         private readonly IAppConfigurationSection tenantSection;
         private readonly IAppConfigurationSection globalSection;
 
@@ -18,13 +18,18 @@ namespace Meeg.Configuration.Extensions.MultiTenant
 
         public string this[string key] => GetValue(key);
 
-        public TenantAppConfigurationSection(IAppConfigurationRoot root, TenantKey tenant)
+        public TenantAppConfigurationSection(IAppConfigurationRoot root, string tenant)
             : this(root, tenant, tenant)
         {
         }
 
-        public TenantAppConfigurationSection(IAppConfigurationRoot root, string key, TenantKey tenant)
+        public TenantAppConfigurationSection(IAppConfigurationRoot root, string key, string tenant)
         {
+            if (string.IsNullOrEmpty(tenant))
+            {
+                throw new ArgumentException("Cannot be null or empty.", nameof(tenant));
+            }
+
             this.root = root;
             this.tenant = tenant;
 
