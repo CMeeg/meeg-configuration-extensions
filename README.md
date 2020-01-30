@@ -1,1 +1,1 @@
-meeg-configuration-extensions
+# Meeg.Configuration.Extensions
