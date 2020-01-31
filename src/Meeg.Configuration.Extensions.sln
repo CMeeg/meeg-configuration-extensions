@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meeg.Configuration.Extensions", "Meeg.Configuration.Extensions\Meeg.Configuration.Extensions.csproj", "{A2D730F0-6EC5-4A72-8DE0-FCDBFD87A8D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meeg.Configuration.Extensions.Tests", "Meeg.Configuration.Extensions.Tests\Meeg.Configuration.Extensions.Tests.csproj", "{B52FDB2B-928B-4BC0-96C5-BCDE860DB614}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2D730F0-6EC5-4A72-8DE0-FCDBFD87A8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D730F0-6EC5-4A72-8DE0-FCDBFD87A8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D730F0-6EC5-4A72-8DE0-FCDBFD87A8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D730F0-6EC5-4A72-8DE0-FCDBFD87A8D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B52FDB2B-928B-4BC0-96C5-BCDE860DB614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B52FDB2B-928B-4BC0-96C5-BCDE860DB614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B52FDB2B-928B-4BC0-96C5-BCDE860DB614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B52FDB2B-928B-4BC0-96C5-BCDE860DB614}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D07F641F-0931-4913-88AA-5D5217A85CDD}
+	EndGlobalSection
+EndGlobal
